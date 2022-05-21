@@ -6,11 +6,14 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const app = express();
+const swaggerUi = require("swagger-ui-express");
+const swaggerFile = require("./swagger.json");
 
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan("combined"));
+app.use("/docs/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 const urldb = process.env.DATABASE_URL;
 mongoose.connect(urldb, { useNewUrlParser: true, useUnifiedTopology: true });
