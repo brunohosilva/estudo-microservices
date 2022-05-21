@@ -51,12 +51,31 @@ app.post("/", (req, res) => {
     });
 });
 
-app.put("/:id", (req, res) => {
-  res.status(202).send({ id: req.params.id, body: req.body });
+app.put("/atualizar/:id", (req, res) => {
+  Cliente.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (erro, dados) => {
+      if (erro)
+        return res
+          .status(500)
+          .send({ output: `Erro ao processar a atualizacao --> ${erro}` });
+      if (!dados)
+        return res
+          .status(400)
+          .send({ output: `Nao foi possivel atualizar --> ${error}` });
+      return res.status(200).send({ output: `Atualizado`, payload: dados });
+    }
+  );
 });
 
-app.delete("/:id", (req, res) => {
-  res.status(202).send({ id: req.params.id, body: req.body });
+app.delete("/apagar/:id", (req, res) => {
+  Cliente.findByIdAndDelete(req.params.id, (erro, dados) => {
+    if (erro)
+      return res.status(500).send({ output: `Error ao deletar --> ${erro}` });
+    return res.status(204).send({});
+  });
 });
 
 app.use((req, res) => {
@@ -64,4 +83,4 @@ app.use((req, res) => {
   res.status(404).send("404 - Not Found");
 });
 
-app.listen(3001, () => console.log("Server on-line. Listen on port 3001"));
+app.listen(4001, () => console.log("Server on-line. Listen on port 3001"));
