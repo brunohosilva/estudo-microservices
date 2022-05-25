@@ -1,4 +1,5 @@
 const jwt = require("jsonWebtoken");
+const cfg = require("../config/cfg");
 
 const verify_token = (req, res, next) => {
   const token = req.headers.token;
