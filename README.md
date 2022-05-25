@@ -1,6 +1,8 @@
-# Projeto MBA FIAP - Microservices
+# Projeto MBA FIAP - backend
 
-Projeto de estudo sobre microservices e API's
+Estudo sobre criação de api's utilizando Node.js.
+Feito CRUD + login com jwt 
+
 
 ## Installation
 
