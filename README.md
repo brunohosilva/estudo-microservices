@@ -1,7 +1,8 @@
 # Projeto MBA FIAP - backend
 
-Estudo sobre criação de api's utilizando Node.js.
-Feito CRUD + login com jwt 
+Estudo sobre criação de api's utilizando Node.js + MongoDB para armazenamento dos dados
+
+Feito CRUD + login com jwt.
 
 
 ## Installation
