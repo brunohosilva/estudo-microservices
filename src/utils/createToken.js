@@ -1,8 +1,8 @@
 const jwt = require("jsonWebtoken");
-
+const cfg = require("../config/cfg");
 const create_token = (id, usuario, email) => {
-  jwt.sign({ id, usuario, email }, cfg.jwt_secret, {
-    expires_in: cfg.expires_in,
+  return jwt.sign({ id, usuario, email }, cfg.jwt_secret, {
+    expiresIn: cfg.expires_in,
   });
 };
 
