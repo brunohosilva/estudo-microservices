@@ -1,6 +1,10 @@
-const urldb = process.env.DATABASE_URL;
 const mongoose = require("mongoose");
-mongoose.connect(urldb, { useNewUrlParser: true, useUnifiedTopology: true });
+const cfg = require("../config/cfg");
+
+mongoose.connect(cfg.db_path, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const schema = new mongoose.Schema({
   nome: { type: String, require: true },
